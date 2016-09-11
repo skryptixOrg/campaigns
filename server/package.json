@@ -1,0 +1,19 @@
+{
+  "name": "campaigns",
+  "version": "1.0.0",
+  "description": "Campaigns scheduler over exotel API",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skryptixOrg/campaigns.git"
+  },
+  "author": "Gandharva.rb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skryptixOrg/campaigns/issues"
+  },
+  "homepage": "https://github.com/skryptixOrg/campaigns#readme"
+}
