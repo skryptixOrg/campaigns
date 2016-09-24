@@ -4,3 +4,4 @@ server/campaigns/node_modules/*
 client/node_modules/*
 .idea/
 idea/vcs.xml
+npm-debug.log
