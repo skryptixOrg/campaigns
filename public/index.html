@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Datetimepicker css -->
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -67,9 +70,9 @@
                     <li>
                         <a class="page-scroll" href="#support">Support</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#login">Login</a>
-                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="login.html">Login</a>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -81,10 +84,17 @@
     <!-- Header -->
     <header>
         <div class="container">
+          <div class="row">
             <div class="intro-text">
                 <div class="intro-lead-in">Setup a Call Campaign in<br class="hidden-xs"> 3 simple steps</div>
-                <a href="#services" class="btn btn-xl">Sign Up</a>
+                <div class="col-md-3 col-md-offset-3">
+                  <a href="login.html" class="btn btn-xl">Login</a>
+                </div>
+                <div class="col-md-3">
+                  <a href="signup.html" class="btn btn-xl">Sign Up</a>
+                </div>
             </div>
+          </div>
         </div>
     </header>
 
@@ -99,8 +109,8 @@
                 </div>
             </div>
             <br/>
-    
-    
+
+
             <div class="row text-center">
                 <h2 class="">Benifits</h2>
                  <div class="col-lg-6">
@@ -109,9 +119,9 @@
                     <div class="intro-lead-in-sm">Get Instant Reports</div>
                 </div>
             </div>
-     </section>   
+     </section>
      <!--Ends Page dependant content -->
-   
+
     <footer>
         <div class="container">
             <div class="row">
@@ -141,7 +151,7 @@
         </div>
     </footer>
 
-    
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -153,9 +163,22 @@
     <script src="js/classie.js"></script>
     <script src="js/cbpAnimatedHeader.js"></script>
 
+    <!--FileUpload JS-->
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
+
+    <!-- Validation JS -->
+    <script type="text/javascript" src="js/jquery.validation.min.js"></script>
+
+    <!--Datepicker JS-->
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
 
     <!-- Custom Theme JavaScript -->
     <script src="js/customize.js"></script>
