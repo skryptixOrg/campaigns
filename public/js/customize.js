@@ -39,10 +39,15 @@ $("#login-form").validate({
     $("#register-form").validate({
     	rules: {
         // reg_username: "required",
-    	  // reg_password: {
-    		// 	required: true,
-    		// 	minlength: 8
-    		// },
+    	  reg_password: {
+    			required: true,
+    			minlength: 8
+    		},
+        reg_password_confirm: {
+          required: true,
+          minlength: 8,
+          equalTo : "#reg_password"
+        }
     		// reg_email: {
     	  //   required: true,
     		// 	email: true
@@ -122,25 +127,21 @@ $('#campaign-name-form').validate({
           				campaign_name: "Please enter valid name"
           			},
           			submitHandler: function(form) {
-          	            $.post(
-          	                //$templateDir + "/snippets/form-submit.php",  //Create a snippet tot include all submit actions - Gandharva
-          	                //$('#campaign-name-form').serialize(),
-          	            );
-          	            //$('.landing-enquiry-form')[0].reset();
+
           	        }
           		});
 
 //File Upload functions
-$(function () {
-    $('#fileupload').fileupload({
-        dataType: 'csv',
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });
-        }
-    });
-});
+// $(function () {
+//     $('#fileupload').fileupload({
+//         dataType: 'csv',
+//         done: function (e, data) {
+//             $.each(data.result.files, function (index, file) {
+//                 $('<p/>').text(file.name).appendTo(document.body);
+//             });
+//         }
+//     });
+// });
 
 //Contact list upload form
 $('#contact-list-upload').validate({
@@ -154,11 +155,7 @@ $('#contact-list-upload').validate({
           				files: "Please enter a valid file"
           			},
           			submitHandler: function(form) {
-          	            $.post(
-          	                //$templateDir + "/snippets/form-submit.php",  //Create a snippet tot include all submit actions - Gandharva
-          	                //$('#campaign-name-form').serialize(),
-          	            );
-          	            //$('#campaign-name-form')[0].reset();
+
           	        }
           		});
 
@@ -175,11 +172,7 @@ $('#contact-list-upload').validate({
                         				files: "Please enter a valid file"
                         			},
                         			submitHandler: function(form) {
-                        	            $.post(
-                        	                //$templateDir + "/snippets/form-submit.php",  //Create a snippet tot include all submit actions - Gandharva
-                        	                //$('#voice-upload').serialize(),
-                        	            );
-                        	            //$('#voice-upload')[0].reset();
+
                         	        }
                         		});
 
@@ -195,15 +188,22 @@ $('#date-time-form').validate({
 
           			},
           			submitHandler: function(form) {
-          	            $.post(
-          	                //$templateDir + "/snippets/form-submit.php",  //Create a snippet tot include all submit actions - Gandharva
-          	                //$('#date-time-form').serialize(),
-          	            );
-          	            //$('#date-time-form')[0].reset();
+
           	        }
           		});
 
 //Done submit action
 $('#done').click(function(){
 
+});
+$('#register-btn').click(function(ev) {
+    ev.preventDefault(); // to stop the form from submitting
+    var values = {};
+    $.each($('#register-form').serializeArray(), function(i, field) {
+    values[field.name] = field.value;
+    });
+    $.post("/api/users",values,function(res){
+      alert(1);
+      window.location.href="http://localhost:3000/login.html";
+    });
 });
