@@ -142,6 +142,7 @@ $('#campaign-name-form').validate({
 //         }
 //     });
 // });
+//fileupload
 
 //Contact list upload form
 $('#contact-list-upload').validate({
@@ -149,6 +150,10 @@ $('#contact-list-upload').validate({
               error.insertBefore(element);
           },
           			rules: {
+                  field: {
+                    //required: true,
+                    accept: "audio/*"
+                  }
 
           			},
           			messages: {
@@ -206,4 +211,16 @@ $('#register-btn').click(function(ev) {
       alert(1);
       window.location.href="http://localhost:3000/login.html";
     });
+});
+
+//test
+// $( document ).ajaxComplete(function() {
+//   $( ".status" ).text( "handler" );
+// });
+$( document ).ajaxComplete(function() {
+  $( ".log" ).text( "Initialised" );
+});
+
+$( "#start-campaign" ).click(function() {
+  $( ".result" ).load( "ajax/test.html" );
 });
