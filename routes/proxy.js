@@ -31,12 +31,6 @@ router.get('/', function (req, res, next) {
                 parseString(body, function (err, result) {
                     console.dir(result);
                 });
-                /*bucket.insert("call-details", { To: , shoeSize: 13}, function(error, result) {
-                 if(error)
-                 console.log(error);
-                 else
-                 console.log(result);
-                 });*/
             }
         });
     });

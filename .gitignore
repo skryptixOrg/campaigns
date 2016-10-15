@@ -5,3 +5,4 @@ client/node_modules/*
 .idea/
 idea/vcs.xml
 npm-debug.log
+public/csv/*

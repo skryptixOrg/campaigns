@@ -20,6 +20,7 @@
     "multer": "^1.2.0",
     "mysql": "^2.11.1",
     "node-restful": "^0.2.5",
+    "node-schedule": "^1.1.1",
     "request": "^2.75.0",
     "serve-favicon": "~2.3.0",
     "xml2js": "^0.4.17"
