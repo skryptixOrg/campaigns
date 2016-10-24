@@ -194,7 +194,6 @@ $('#date-time-form').validate({
 
 //Done submit action
 $('#done').click(function(){
-
 });
 $('#register-btn').click(function(ev) {
     ev.preventDefault(); // to stop the form from submitting
@@ -207,3 +206,22 @@ $('#register-btn').click(function(ev) {
       window.location.href="http://localhost:3000/login.html";
     });
 });
+function doThis(e){
+    var data = new FormData();
+    jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
+        data.append('csv', file);
+    });
+        $.ajax({
+            url: "api/startCampaign",
+            type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                alert('done')
+            },
+            cache: false,
+            contentType: 'application/json',
+            processData: false
+        });
+    return false;
+}

@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var request = require('request');
 var mongoose = require('mongoose');
 var _ = require('lodash');
@@ -26,7 +27,7 @@ router.post('/validateUser', function (req, res) {
             if (err) return console.log(err);
             console.log(user);
             if(user !== null)
-                res.send(user);
+                res.sendFile(path.join(__dirname, '../public', 'index.html'));
             else {
                 res.status(404);
                 res.send();
