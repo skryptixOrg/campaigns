@@ -38,7 +38,7 @@ $("#login-form").validate({
   //Sign up form Validation
     $("#register-form").validate({
     	rules: {
-        // reg_username: "required",
+        reg_username: "required",
     	  reg_password: {
     			required: true,
     			minlength: 8
@@ -47,13 +47,13 @@ $("#login-form").validate({
           required: true,
           minlength: 8,
           equalTo : "#reg_password"
-        }
-    		// reg_email: {
-    	  //   required: true,
-    		// 	email: true
-    		// },
+        },
+    		reg_email: {
+    	    required: true,
+    			email: true
+    		},
       },
-  	  //errorClass: "form-invalid",
+  	  errorClass: "form-invalid",
     });
     // Form Submission
     $("#register-form").submit(function() {
@@ -193,8 +193,10 @@ $('#date-time-form').validate({
           		});
 
 //Done submit action
-$('#done').click(function(){
-});
+// $('#done').click(function(){
+//
+// });
+
 $('#register-btn').click(function(ev) {
     ev.preventDefault(); // to stop the form from submitting
     var values = {};
@@ -206,22 +208,83 @@ $('#register-btn').click(function(ev) {
       window.location.href="http://localhost:3000/login.html";
     });
 });
+
+// function doThis(e){
+//     var data = new FormData();
+//     jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
+//         data.append('campaign-name', text);
+//         data.append('csv', file);
+//       });
+//       //  console.log(data.get('csv'));
+//       $.ajax({
+//             url: "api/startCampaign",
+//             type: 'POST',
+//             data: data,
+//             async: false,
+//             success: function (data) {
+//                 alert('done')
+//             },
+//             cache: false,
+//           //  contentType: 'application/json',
+//             processData: false
+//         });
+//         console.log('here');
+//
+//     return false;
+// }
+// Create Campaign and Schedule Campaign
 function doThis(e){
-    var data = new FormData();
-    jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
-        data.append('csv', file);
-    });
-        $.ajax({
-            url: "api/startCampaign",
-            type: 'POST',
-            data: formData,
-            async: false,
-            success: function (data) {
-                alert('done')
-            },
-            cache: false,
-            contentType: 'application/json',
-            processData: false
+  if ($('#btnStart')){
+    $('#btnStart').click(function() {
+      var data = new FormData();
+      jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
+          data.append('#campaign-name', text);
+          data.append('csv', file);
         });
-    return false;
+         console.log(data.get('csv'));
+        $.ajax({
+              url: "api/scheduleCampaign",
+              type: 'POST',
+              data: data,
+              async: false,
+              success: function (data) {
+                  alert('done')
+              },
+              cache: false,
+            //  contentType: 'application/json',
+              processData: false
+          });
+          // console.log('here');
+
+      return false;
+      });
+    }
+
+    if ($('#btnSchedule')){
+      $('#btnSchedule').click(function() {
+        var data = new FormData();
+        jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
+            data.append('#campaign-name', text);
+            data.append('csv', file);
+            data.append('#fromDate', text);
+            data.append('#toDate', text);
+            data.append('#time', text);
+          });
+           console.log(data.get('csv'));
+          $.ajax({
+                url: "api/scheduleCampaign",
+                type: 'POST',
+                data: data,
+                async: false,
+                success: function (data) {
+                    alert('done')
+                },
+                cache: false,
+              //  contentType: 'application/json',
+                processData: false
+            });
+            // console.log('here');
+        return false;
+        });
+      } 
 }
