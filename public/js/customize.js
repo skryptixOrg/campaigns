@@ -232,10 +232,10 @@ $('#register-btn').click(function(ev) {
 //
 //     return false;
 // }
+
 // Create Campaign and Schedule Campaign
 function doThis(e){
-  if ($('#btnStart')){
-    $('#btnStart').click(function() {
+    if(e.target=='#btnStart'){
       var data = new FormData();
       jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
           data.append('#campaign-name', text);
@@ -256,12 +256,9 @@ function doThis(e){
           });
           // console.log('here');
 
-      return false;
-      });
     }
 
-    if ($('#btnSchedule')){
-      $('#btnSchedule').click(function() {
+    if(e.target=='#btnSchedule'){
         var data = new FormData();
         jQuery.each(jQuery('#file-upload')[0].files, function(i, file) {
             data.append('#campaign-name', text);
@@ -284,7 +281,30 @@ function doThis(e){
                 processData: false
             });
             // console.log('here');
-        return false;
-        });
-      } 
+      }
 }
+
+//Fetch values for the campaign list details
+function fetchVal(e){
+    var data = new FormData();
+      //  console.log(data.get('csv'));
+      $.ajax({
+            url: "api/campaigns",
+            type: 'GET',
+            async: false,
+            success: function (data) {
+                var e = "";
+                for(i=0; i < data.length; i++){
+                  e += '<div class="container bg-grey campaign-block"><div class="col-md-12"><h3 class="no-margin" name="Campaign_name" class="Campaign_name">'+ data[i].Campaign_name +'</h3></div><div class="col-md-12 campaign-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><span class="FromDate">' + data[i].From_Date + '</span><br/><br/><div class="col-md-3 divider"><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="campaign_status">' + data[i].CampaignStatus + '</span></div><div class="col-md-2 col-md-offset-1 stats"><p class="font-bold">Total Calls</p><p class="font-bold"><span class="TotalCalls">' + data[i].TotalCalls + '</span></p></div><div class="col-md-2 stats"><p class="font-bold">Calls Answered</p><p class="font-bold"><span class="AnsweredCalls">' + data[i].AnsweredCalls +'</span></p></div><div class="col-md-2 stats"><p class="font-bold">No Response</p><p class="font-bold"><span class="NoResponse"> ' + data[i].NoResponse +'</span></p></div><div class="col-md-2 stats"><p class="font-bold">Calls Failed</p><p class="font-bold"><span class="FailedCalls">' + data[i].FailedCalls +'</span></p></div></div></div>';
+                }
+                $('.campaign-block').html(e);
+            },
+            cache: false,
+          //  contentType: 'application/json',
+            processData: false
+        });
+        console.log('here');
+
+    return false;
+}
+fetchVal();
